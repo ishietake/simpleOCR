@@ -39,7 +39,7 @@ run the app.py
 Group Members
 
 - Claire Rotap
-- Gwynet Yim
+- Gwyneth Yim
 - Harvey Pascual
 - Hershey Estoya
 - Jose Ezra Nazarene Barcelon Vergabera
