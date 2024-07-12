@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Character Recognition</title>
+    <link rel="stylesheet" href="acr-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="title">
+                <img src="ACR.png" alt="Logo">
+            </h1>
+            <p class="subtitle">ASCII CHARACTER RECOGNITION USING ARTIFICIAL NEURAL NETWORK (ANN)</p>
+        </header>
+        <main>
+            <div class="upload-section">
+                <button style="background: none;">
+                    <img src="upload.png" alt="Upload Icon" class="upload-icon">
+                </button>
+                <p>Upload training datasets...</p>
+            </div>
+            <div class="info-section">
+                <div class="info-block">
+                    <h2>IMAGE</h2>
+                    <div class="input-group">
+                        <label for="pixel-rows">Image pixel rows:</label>
+                        <input type="text" id="pixel-rows" class="input-text">
+                    </div>
+                    <div class="input-group">
+                        <label for="pixel-columns">Image pixel columns:</label>
+                        <input type="text" id="pixel-columns" class="input-text">
+                    </div>
+                </div>
+                <div class="info-block">
+                    <h2>NEURAL NETWORK</h2>
+                    <div class="input-group">
+                        <label for="neurons">Neurons:</label>
+                        <input type="text" id="neurons" class="input-text">
+                    </div>
+                    <div class="input-group">
+                        <label for="learning-rate">Learning rate:</label>
+                        <input type="text" id="learning-rate" class="input-text">
+                    </div>
+                    <div class="input-group">
+                        <label for="error-training">Error for training:</label>
+                        <input type="text" id="error-training" class="input-text">
+                    </div>
+                    <div class="input-group">
+                        <label for="epoch-training">Epoch for training:</label>
+                        <input type="text" id="epoch-training" class="input-text">
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ASCII Character Recognition</title>
+    <link rel="stylesheet" href={{url_for('static',
+    filename='acr-styles.css')}}>
+    <link
+      href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="title">
+          <h1 class="title">
+            <img src={{url_for('static', filename='acr.png')}} alt="Logo">
+          </h1>
+        </div>
+        <div class="subtitle-container">
+          <p class="subtitle">
+            ASCII CHARACTER RECOGNITION USING ARTIFICIAL NEURAL NETWORK (ANN)
+          </p>
+        </div>
+      </header>
+      <main>
+        <div class="upload-section">
+          <button style="background: none">
+            <div class="img-upload">
+              <img src={{url_for('static',filename='upload.png')}} alt="Upload
+              Icon" class="upload-icon">
+            </div>
+          </button>
+          <p>Upload training datasets...</p>
+          <form action="/success" method="post" enctype="multipart/form-data">
+            <input
+              type="file"
+              name="file-input"
+              id="file-input"
+              accept=".xlsx"
+            />
+
+            <input type="submit" value="Upload training datasets" />
+          </form>
+        </div>
+        <div class="info-section">
+            <div class="info-block">
+          <form action="/train-model" method="post">
+
+              <h2>NEURAL NETWORK</h2>
+              <div class="input-group">
+                <h2>
+                  Current File: {% if file_exists %}
+                  <span>{{ file_name }}</span>
+                  {% else %}
+                  <span>No File Input</span>
+                  {% endif %}
+                </h2>
+              </div>
+              <div class="input-group">
+                <label for="neurons">Neurons:</label>
+                <input
+                  type="number"
+                  id="neurons"
+                  name="neurons"
+                  class="input-text"
+                  value="50"
+                />
+              </div>
+              <div class="input-group">
+                <label for="learning-rate">Learning rate:</label>
+                <input
+                  type="text"
+                  id="learning-rate"
+                  name="learning_rate"
+                  class="input-text"
+                  value="0.00001"
+
+                />
+              </div>
+              <div class="input-group">
+                <label for="error-training">Error for training:</label>
+                <input
+                  type="text"
+                  id="error-training"
+                  name="error_training"
+                  class="input-text"
+                  value="0.0000000001"
+
+                />
+              </div>
+              <div class="input-group">
+                <label for="epoch-training">Epoch for training:</label>
+                <input
+                  type="text"
+                  id="epoch-training"
+                  name="epoch_training"
+                  class="input-text"
+                  value="100000"
+                />
+              </div>
+              <button type="submit">Train</button>
+            </div>
+          </form>
+        </div>
+        <br />
+        <div class="info-section">
+          <div class="info-block">
+            <h2>PIXEL INPUT</h2>
+            <a href="/gridInput"><button>Go to Grid Input</button></a>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

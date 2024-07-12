@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ASCII Character Recognition</title>
+    <link rel="stylesheet" href={{url_for('static', filename='gridInput.css')}}>
+    <link
+      href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <div class="title">
+          <h1 class="title">
+            <img src={{url_for('static', filename='acr.png')}} alt="Logo">
+          </h1>
+        </div>
+        <div class="subtitle-container">
+          <p class="subtitle">
+            ASCII CHARACTER RECOGNITION USING ARTIFICIAL NEURAL NETWORK (ANN)
+          </p>
+          <a href="/"><button>Back to menu</button></a>
+        </div>
+      </header>
+      <main>
+        <div class="info-block">
+          <h2>1. Upload the Weights (.pkl) File</h2>
+          <div class="upload-section">
+            <form action="/success" method="post" enctype="multipart/form-data">
+              <input
+                type="file"
+                name="file-input"
+                id="file-input"
+                accept=".pkl"
+              />
+
+              <input type="submit" value="Upload Weights" />
+            </form>
+          </div>
+        </div>
+        <br />
+
+        <div class="info-block">
+          <h2>2. Input the Grid</h2>
+          <h2>
+            Current File: {% if file_exists %}
+            <span>{{ file_name }}</span>
+            {% else %}
+            <span>No File Input</span>
+
+            {% endif %}
+          </h2>
+          <div class="info-section">
+            <div class="info-block">
+              <div id="grid">
+                {% for i in range(7) %}
+                <div class="row">
+                  {% for j in range(5) %}
+                  <div
+                    class="pixel"
+                    data-x="{{ i }}"
+                    data-y="{{ j }}"
+                    onclick="togglePixel(this, {{ i }}, {{ j }})"
+                  ></div>
+                  {% endfor %}
+                </div>
+                {% endfor %}
+              </div>
+              <script>
+                function togglePixel(element, x, y) {
+                  $.post("/click", { x: x, y: y }, function (response) {
+                    if (response.state === 1) {
+                      $(element).addClass("black");
+                    } else {
+                      $(element).removeClass("black");
+                    }
+                    // Update the asciiNumber displayed on the page
+                    $("#asciiNumber").text(response.asciiNumber);
+                    $("#asciiCharacter").text(response.asciiCharacter);
+                  });
+                }
+              </script>
+            </div>
+          </div>
+
+          <div class="info-section">
+            <div class="info-block">
+              <h1>Ascii</h1>
+              <h2 id="asciiNumber">{{ asciiNumber }}</h2>
+              <h1>Character</h1>
+              <h2 id="asciiCharacter">{{ asciiCharacter }}</h2>
+            </div>
+          </div>
+        </div>
+        <br />
+      </main>
+    </div>
+  </body>
+</html>
