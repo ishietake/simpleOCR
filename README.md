@@ -38,11 +38,11 @@ run the app.py
 
 Group Members
 
-- Claire Rotap
-- Gwyneth Yim
+- Lilianne Claire Rotap
+- Gwyneth Anmarie Yim
 - Harvey Pascual
-- Hershey Estoya
-- Jose Ezra Nazarene Barcelon Vergabera
-- Juan Corpuz
+- Hershey Ann Estoya
+- Jose Ezra Nazarene Vergabera
+- Juan Ramon Corpuz
 - Shun Buk Francisco
 
